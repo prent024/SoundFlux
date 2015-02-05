@@ -103,8 +103,8 @@ public class MainActivity extends FragmentActivity
 
     protected LocationRequest createLocationRequest() {
         LocationRequest mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(30000);
-        mLocationRequest.setFastestInterval(1000);
+        mLocationRequest.setInterval(10000);
+        mLocationRequest.setFastestInterval(5000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         return mLocationRequest;
     }
@@ -123,8 +123,8 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onLocationChanged(Location location) {
-        DecimalFormat df = new DecimalFormat();
-        df.setMaximumFractionDigits(2);
+//        DecimalFormat df = new DecimalFormat();
+//        df.setMaximumFractionDigits(2);
         EditText thresh_edit = (EditText)findViewById(R.id.thresh);
         EditText act_edit    = (EditText)findViewById(R.id.act);
         EditText pass_edit   = (EditText)findViewById(R.id.pass);
@@ -141,7 +141,7 @@ public class MainActivity extends FragmentActivity
                 audioMan.setStreamVolume(AudioManager.STREAM_MUSIC, p, 0);
             }
             TextView text = (TextView) findViewById(R.id.speed);
-            text.setText("Speed: " + df.format(Float.toString(convertToMPH(location.getSpeed()))) + " mph");
+            text.setText("Speed: " + Float.toString(convertToMPH(location.getSpeed())) + " mph");
         }
     }
 
